@@ -177,20 +177,20 @@ int main() {
                     break;
                 case 2: //ADD POLYNOMIALS
                     polyAdd(poly1, poly2, polyAddedSum, n);
-                    cout << "\n("; polyPrint(poly1, n); cout << ")"; cout << " + "; cout << "("; polyPrint(poly2, n); cout << ")"; cout << " = "; polyPrint(polyAddedSum, n); //clearer way to show the operation in the output
+                    cout << "\n--> ("; polyPrint(poly1, n); cout << ")"; cout << " + "; cout << "("; polyPrint(poly2, n); cout << ")"; cout << " = "; polyPrint(polyAddedSum, n); //clearer way to show the operation in the output
 
                     cout << "\n";
                     selectedPolyMenu = 0;
                     break;
                 case 3: //SUBTRACT POLYNOMIALS
                     polySubtract(poly1, poly2, polySubtSum, n);
-                    cout << "\n("; polyPrint(poly1, n); cout << ")"; cout << " - "; cout << "("; polyPrint(poly2, n); cout << ")"; cout << " = "; polyPrint(polySubtSum, n); //clearer way to show the operation in the output
+                    cout << "\n--> ("; polyPrint(poly1, n); cout << ")"; cout << " - "; cout << "("; polyPrint(poly2, n); cout << ")"; cout << " = "; polyPrint(polySubtSum, n); //clearer way to show the operation in the output
 
                     cout << "\n";
                     selectedPolyMenu = 0;
                     break;
                 case 4: //MULTIPLY POLYNOMIALS
-                    cout << "\n("; polyPrint(poly1, n); cout << ")"; cout << " * "; cout << "("; polyPrint(poly2, n); cout << ")"; cout << " = "; polyMultiply(poly1, poly2, m, n); //clearer way to show the operation in the output. function is at the end of this line
+                    cout << "\n--> ("; polyPrint(poly1, n); cout << ")"; cout << " * "; cout << "("; polyPrint(poly2, n); cout << ")"; cout << " = "; polyMultiply(poly1, poly2, m, n); //clearer way to show the operation in the output. function is at the end of this line
 
                     cout << "\n";
                     selectedPolyMenu = 0;
@@ -203,10 +203,12 @@ int main() {
                     cin >> selectedPoly;
                     switch (selectedPoly) {
                     case 1:
+                        cout << "\n--> ("; polyPrint(poly1, n); cout << ")' = ";
                         polyDerive(poly1, n);
                         break;
 
                     case 2:
+                        cout << "\n--> ("; polyPrint(poly2, m); cout << ")' = ";
                         polyDerive(poly2, m);
                         break;
 
