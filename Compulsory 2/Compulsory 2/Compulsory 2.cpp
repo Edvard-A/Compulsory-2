@@ -1,4 +1,4 @@
-//I'm not sure I'm using the word "increment" correctly in most of the program, but I'm trying to refer to the position of something in an array
+//I'm not sure I'm using the word "instance" correctly in most of the program, but I'm trying to refer to the position of something in an array
 #include <iostream>
 using namespace std;
 
@@ -21,7 +21,7 @@ int polyMultSum[n + m - 1]; //empty array where we assign the sum of both arrays
 /// <param name="n">number we want to find the factorial of</param>
 /// <returns>result of the factorial sum</returns>
 int factorial(int n) {
-    if ((n >= 0) && (n % 1 == 0)) { //checks if the number is less than zero, as well as checking if it's an integer
+    if ((n >= 0) && (n % 1 == 0)) { //checks if the number is less than zero, as well as checking if it's an integerhh
         if ((n == 1) || (n == 0)) { //checks if our number is equal to zero or one, since 1! and 0! are equal to 0. this is the simplest version of the problem, and thus the base case
             result = 1;
         }
@@ -43,16 +43,16 @@ int factorial(int n) {
 /// <param name="poly">the array we want to output</param>
 /// <param name="n">length of the array</param>
 void polyPrint(int poly[], int n) {
-    for (int i = 0; i < n; i++) { 
-        if (poly[i] != 0) { //outputs for every increment of the array where the value is not zero 
-            cout << poly[i];  
-            if (i > 1) 
+    for (int i = 0; i < n; i++) {
+        if (poly[i] != 0) { //outputs for every instance of the array where the value is not zero 
+            cout << poly[i];
+            if (i > 1)
                 cout << "x^" << i; //adds an x-value to the power of the position of the array, convenient since the 
-            if (i == 1) 
+            if (i == 1)
                 cout << "x"; // same as the above but since it's to the power of 1, it can just be written as "x" 
-            if ((i != n - 1) && (poly[i + 1] != 0)) 
+            if (i != n - 1)
                 cout << " + "; //prints a plus sign so long as the loop isn't at the end of the array, and as long as the next number in trhe array is not zero 
-        } 
+        }
     }
 }
 
@@ -98,6 +98,11 @@ void polyMultiply(int poly1[], int poly2[], int n, int m) {
     polyPrint(polyMultSum, n + m - 1); //outputs the result of the multiplication as an array with the length of 
 }
 
+/// <summary>
+/// function to derive a polynomial
+/// </summary>
+/// <param name="poly">the array/polynomial we want to derive</param>
+/// <param name="n">length of the array</param>
 void polyDerive(int poly[], int n) {
     for (int i = 0; i < n; i++) {
         poly[i] *= i; //multiplies the number with the exponent, standard derivation rules
@@ -107,7 +112,7 @@ void polyDerive(int poly[], int n) {
                 cout << "x^" << i - 1; //adds an x-value to the power of the position of the array, convenient since the
             if (i - 1 == 1)
                 cout << "x"; // same as the above but since it's to the power of 1, it can just be written as "x"
-            if ((i != n - 1) && (poly[i + 1] != 0))
+            if (i != n - 1)
                 cout << " + "; //prints a plus sign so long as the loop isn't at the end of the array, and as long as the next number in trhe array is not zero
         }
     }
@@ -120,23 +125,23 @@ int main() {
     int selectedOpMenu = 0; //value to determine a switch-case menu for the math operation 
     int selectedPoly = 0; //value to determine the first or second polynomial is selected
 
-    while (selectedMenu == 0) { 
+    while (selectedMenu == 0) {
         cout << "1. find factorial of a number \n";
         cout << "2. polynomials \n";
         cout << "3. simple math operations \n";
         cout << "4. Exit \n";
-        cin >> selectedMenu; 
-         
-        switch (selectedMenu) { 
+        cin >> selectedMenu;
+
+        switch (selectedMenu) {
         case 1: //FACTORIAL 
             cout << "what number do you want to factorise? \n";
             cin >> number;
             factorial(number);
-            if((factorial(number)) != 0)
+            if ((factorial(number)) != 0)
                 cout << number << "'s factorial is: " << result;
 
             cout << "\n\n----------------------------------------------------------------------------------------------\n\n";
-            selectedMenu = 0; 
+            selectedMenu = 0;
             break;
 
         case 2: //POLYNOMIALS
@@ -164,7 +169,7 @@ int main() {
 
                 case 1: //PRINT POLYNOMIALS
 
-                    cout << "1. polynomial is: "; polyPrint(poly1, n);
+                    cout << "\n1. polynomial is: "; polyPrint(poly1, n);
                     cout << "\n2. polynomial is: "; polyPrint(poly2, n);
 
                     cout << "\n";
@@ -172,42 +177,42 @@ int main() {
                     break;
                 case 2: //ADD POLYNOMIALS
                     polyAdd(poly1, poly2, polyAddedSum, n);
-                    cout << "("; polyPrint(poly1, n); cout << ")"; cout << " + "; cout << "("; polyPrint(poly2, n); cout << ")"; cout << " = "; polyPrint(polyAddedSum, n); //clearer way to show the operation in the output
+                    cout << "\n("; polyPrint(poly1, n); cout << ")"; cout << " + "; cout << "("; polyPrint(poly2, n); cout << ")"; cout << " = "; polyPrint(polyAddedSum, n); //clearer way to show the operation in the output
 
                     cout << "\n";
                     selectedPolyMenu = 0;
                     break;
                 case 3: //SUBTRACT POLYNOMIALS
                     polySubtract(poly1, poly2, polySubtSum, n);
-                    cout << "("; polyPrint(poly1, n); cout << ")"; cout << " - "; cout << "("; polyPrint(poly2, n); cout << ")"; cout << " = "; polyPrint(polySubtSum, n); //clearer way to show the operation in the output
+                    cout << "\n("; polyPrint(poly1, n); cout << ")"; cout << " - "; cout << "("; polyPrint(poly2, n); cout << ")"; cout << " = "; polyPrint(polySubtSum, n); //clearer way to show the operation in the output
 
                     cout << "\n";
                     selectedPolyMenu = 0;
                     break;
                 case 4: //MULTIPLY POLYNOMIALS
-                    cout << "("; polyPrint(poly1, n); cout << ")"; cout << " * "; cout << "("; polyPrint(poly2, n); cout << ")"; cout << " = "; polyMultiply(poly1, poly2, m, n); //clearer way to show the operation in the output. function is at the end of this line
+                    cout << "\n("; polyPrint(poly1, n); cout << ")"; cout << " * "; cout << "("; polyPrint(poly2, n); cout << ")"; cout << " = "; polyMultiply(poly1, poly2, m, n); //clearer way to show the operation in the output. function is at the end of this line
 
                     cout << "\n";
                     selectedPolyMenu = 0;
                     break;
                 case 5: //DERIVE POLYNOMIALS
                     cout << "choose a polynomial to derive: \n";
-                    cout << "1. "; polyPrint(poly1, n);
+                    cout << "\n1. "; polyPrint(poly1, n);
                     cout << "\n2. "; polyPrint(poly2, m);
-                    cout << "\n"; 
+                    cout << "\n";
                     cin >> selectedPoly;
                     switch (selectedPoly) {
-                        case 1:
-                            polyDerive(poly1, n);
-                            break;
+                    case 1:
+                        polyDerive(poly1, n);
+                        break;
 
-                        case 2:
-                            polyDerive(poly2, m);
-                            break;
+                    case 2:
+                        polyDerive(poly2, m);
+                        break;
 
-                        default:
-                            cout << "invalid input";
-                            break;
+                    default:
+                        cout << "invalid input";
+                        break;
                     }
 
                     cout << "\n";
